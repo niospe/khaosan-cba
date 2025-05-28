@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khaosan Thai Food - Córdoba</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('textura-doraa.png') repeat;
+            background-color: rgba(218, 165, 32, 0.1);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #daa520;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .title {
+            color: #8B0000;
+            margin-bottom: 30px;
+            font-size: 24px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+
+
+        .link-wrapper {
+            position: relative;
+        }
+        
+        .link-item {
+            position: relative;
+            background-image: url(fondo-links.png);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            /* background-color: rgba(255, 255, 255, 0.9); */
+            padding: 15px 40px 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+        }
+        
+        .link-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: white;
+        }
+        
+        .link-item::before {
+            content: "";
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid #daa520;
+        }
+        
+        .share-dots {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 20px;
+            color: #daa520;
+            padding: 0 5px;
+        }
+        
+        .share-menu {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 10;
+            display: none;
+            width: 150px;
+            overflow: hidden;
+        }
+        
+        .share-menu a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            text-align: left;
+            transition: background 0.2s;
+        }
+        
+        .share-menu a:hover {
+            background: #f0f0f0;
+        }
+        
+        .share-menu a i {
+            margin-right: 8px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+            }
+            
+            .logo {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Video de fondo -->
+    <video autoplay muted loop class="video-background">
+        <source src="fried-rice.mp4" type="video/mp4">
+    </video>
+    
+    <div class="overlay"></div>
+    
+    <div class="container">
+        <!-- Logo -->
+        <img src="khaosan-logo.webp" alt="Khaosan Thai Food" class="logo">
+        
+        <h1 class="title">Khaosan Thai Food - Córdoba</h1>
+        
+        <div class="links-container">
+            <!-- Enlace RAPPI -->
+            <div class="link-wrapper">
+                
+                <a href="https://www.rappi.com.ar/restaurantes/khaosan-thai-food" class="link-item" target="_blank">
+                    RAPPI - Único delivery
+                </a>
+                <div class="share-dots" onclick="toggleShareMenu(this)">⋮</div>
+                <div class="share-menu">
+                    <a href="#" onclick="shareOnWhatsApp('https://www.rappi.com.ar/restaurantes/khaosan-thai-food')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#" onclick="shareOnFacebook('https://www.rappi.com.ar/restaurantes/khaosan-thai-food')">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="#" onclick="shareOnTwitter('https://www.rappi.com.ar/restaurantes/khaosan-thai-food', 'Pedí deliciosa comida tailandesa en Khaosan Thai Food por Rappi')">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="#" onclick="copyToClipboard('https://www.rappi.com.ar/restaurantes/khaosan-thai-food')">
+                        <i class="fas fa-copy"></i> Copiar enlace
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Enlace WHATSAPP -->
+            <div class="link-wrapper">
+                <a href="https://wa.me/5493512345678" class="link-item" target="_blank">
+                    WHATSAPP - Reservas Córdoba
+                </a>
+                <div class="share-dots" onclick="toggleShareMenu(this)">⋮</div>
+                <div class="share-menu">
+                    <a href="#" onclick="shareOnWhatsApp('https://wa.me/5493512345678')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#" onclick="shareOnFacebook('https://wa.me/5493512345678')">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="#" onclick="shareOnTwitter('https://wa.me/5493512345678', 'Reserva tu mesa en Khaosan Thai Food - Comida tailandesa en Córdoba')">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="#" onclick="copyToClipboard('https://wa.me/5493512345678')">
+                        <i class="fas fa-copy"></i> Copiar enlace
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Repite la misma estructura para los otros enlaces -->
+            <!-- CARTA -->
+            <div class="link-wrapper">
+                <a href="menu-khaosan.pdf" class="link-item" target="_blank">
+                    CARTA (Córdoba)
+                </a>
+                <div class="share-dots" onclick="toggleShareMenu(this)">⋮</div>
+                <div class="share-menu">
+                    <a href="#" onclick="shareOnWhatsApp('menu-khaosan.pdf')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#" onclick="shareOnFacebook('menu-khaosan.pdf')">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="#" onclick="shareOnTwitter('menu-khaosan.pdf', 'Mira la carta de Khaosan Thai Food - Deliciosa comida tailandesa en Córdoba')">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="#" onclick="copyToClipboard('menu-khaosan.pdf')">
+                        <i class="fas fa-copy"></i> Copiar enlace
+                    </a>
+                </div>
+            </div>
+            
+            <!-- UBICACIÓN -->
+            <div class="link-wrapper">
+                <a href="https://maps.app.goo.gl/example" class="link-item" target="_blank">
+                    UBICACIÓN
+                </a>
+                <div class="share-dots" onclick="toggleShareMenu(this)">⋮</div>
+                <div class="share-menu">
+                    <a href="#" onclick="shareOnWhatsApp('https://maps.app.goo.gl/example')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#" onclick="shareOnFacebook('https://maps.app.goo.gl/example')">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="#" onclick="shareOnTwitter('https://maps.app.goo.gl/example', 'Ubicación de Khaosan Thai Food - Comida tailandesa en Córdoba')">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="#" onclick="copyToClipboard('https://maps.app.goo.gl/example')">
+                        <i class="fas fa-copy"></i> Copiar enlace
+                    </a>
+                </div>
+            </div>
+            
+            <!-- INSTAGRAM -->
+            <div class="link-wrapper">
+                <a href="https://www.instagram.com/khaosan.cba" class="link-item" target="_blank">
+                    INSTAGRAM
+                </a>
+                <div class="share-dots" onclick="toggleShareMenu(this)">⋮</div>
+                <div class="share-menu">
+                    <a href="#" onclick="shareOnWhatsApp('https://www.instagram.com/khaosan.cba')">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#" onclick="shareOnFacebook('https://www.instagram.com/khaosan.cba')">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="#" onclick="shareOnTwitter('https://www.instagram.com/khaosan.cba', 'Sigue a Khaosan Thai Food en Instagram - Comida tailandesa en Córdoba')">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="#" onclick="copyToClipboard('https://www.instagram.com/khaosan.cba')">
+                        <i class="fas fa-copy"></i> Copiar enlace
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            © 2025 Khaosan Thai Food - Córdoba
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar/ocultar el menú compartir
+        function toggleShareMenu(element) {
+            // Cierra cualquier otro menú abierto
+            document.querySelectorAll('.share-menu').forEach(menu => {
+                if (menu !== element.nextElementSibling) {
+                    menu.style.display = 'none';
+                }
+            });
+            
+            // Alterna el menú actual
+            const menu = element.nextElementSibling;
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            
+            // Cierra el menú al hacer clic fuera
+            if (menu.style.display === 'block') {
+                setTimeout(() => {
+                    document.addEventListener('click', closeAllMenus);
+                }, 10);
+            } else {
+                document.removeEventListener('click', closeAllMenus);
+            }
+        }
+        
+        function closeAllMenus(e) {
+            if (!e.target.closest('.share-menu') && !e.target.classList.contains('share-dots')) {
+                document.querySelectorAll('.share-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+                document.removeEventListener('click', closeAllMenus);
+            }
+        }
+        
+        // Funciones para compartir
+        function shareOnWhatsApp(url) {
+            window.open(`https://wa.me/?text=Mira esto: ${encodeURIComponent(url)}`, '_blank');
+            closeAllMenus();
+        }
+        
+        function shareOnFacebook(url) {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+            closeAllMenus();
+        }
+        
+        function shareOnTwitter(url, text) {
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+            closeAllMenus();
+        }
+        
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Enlace copiado al portapapeles');
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+            closeAllMenus();
+        }
+    </script>
+</body>
+</html>
